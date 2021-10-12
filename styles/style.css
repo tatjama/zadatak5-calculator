@@ -1,0 +1,85 @@
+
+.dark-mode{
+    --background-main: hsl(222, 26%, 31%);
+    --background-keypad: hsl(223, 31%, 20%);
+    --background-screen: hsl(224, 36%, 15%);
+    --key-main: hsl(30, 25%, 89%);
+    --key-primary: hsl(225, 21%, 49%);
+    --key-secondary: hsl(6, 63%, 50%);    
+    --key-shadow-main: hsl(28, 16%, 65%);
+    --key-shadow-primary: hsl(224, 28%, 35%);
+    --ket-shadow-secondary: hsl(6, 70%, 34%);
+    --text-main: hsl(221, 14%, 31%);
+    --text-primary: hsl(0, 0, 100%);
+    --text-secondary: hsl(0, 0, 100%);
+}
+.light-mode{
+    --background-main: hsl(0, 0%, 90%);
+    --background-keypad: hsl(0, 5%, 81%);
+    --background-screen: hsl(0, 0%, 93%);
+    --key-main:hsl(45, 7%, 89%);
+    --key-primary: hsl(185, 42%, 37%);
+    --key-secondary: hsl(25, 98%, 40%);    
+    --key-shadow-main: hsl(35, 11%, 61%);
+    --key-shadow-primary: hsl(185, 58%, 25%);
+    --ket-shadow-secondary: hsl(25, 99%, 27%);
+    --text-main: hsl(60, 10%, 19%);
+    --text-primary: hsl(0, 0, 100%);
+    --text-secondary: hsl(0, 0, 100%);
+}
+
+.purple-mode{
+    --background-main: hsl(268, 75%, 9%);
+    --background-keypad: hsl(268, 71%, 12%);
+    --background-screen: hsl(268, 71%, 12%);
+    --key-main: hsl(268, 47%, 21%);
+    --key-primary: hsl(281, 89%, 26%);
+    --key-secondary: hsl(176, 100%, 44%);    
+    --key-shadow-main: hsl(290, 70%, 36%);
+    --key-shadow-primary: hsl(285, 91%, 52%);
+    --ket-shadow-secondary: hsl(177, 92%, 70%);
+    --text-main: hsl(52, 100%, 62%);
+    --text-primary: hsl(0, 0, 100%);
+    --text-secondary: hsl(198, 20%, 13%);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    font-family: 'Spartan', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    overflow-x: hidden;
+}
+button{    
+    width: 101px;
+    font-family: 'Spartan', sans-serif;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px 14px;
+    border: 0;
+    cursor: pointer;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.container{
+    width: 540px;
+    height: 708px;
+}
+@media screen and (max-width: 550px) {
+    button {
+        width: 60px;
+    }
+    .container{
+        width: 327px;
+        height: 608px;    
+    }   
+}
