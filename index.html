@@ -21,29 +21,29 @@
     <div class="container">
       <!--Start Header-->
       <header class="calculator-header">        
-        <div class="calculator-logo">calc</div>
-        <div class="calculator-theme">
-          <div class="calculator-theme__title">theme</div>
-          <div class="calculator-theme__switcher-container">
-            <div class="calculator-theme__cases"></div>
-            <div class="calculator-theme__switcher"></div>
+        <div class="logo">calc</div>
+
+        <div class="theme">
+          <div class="theme__title">theme</div>
+          <div class="theme__switcher-container">
+            <!--<div class="calculator-theme__cases"></div>-->
+            <div class="theme__switcher"></div>
           </div>
         </div>
       </header>
       <!--End Header-->
       <!--Start Display-->
       <section class="display-container">
-
+        <input type="text" name="number" placeholder="0" />
       </section>
       <!--End Display-->
       <!--Start Calculator-->
-      <section class="calculator">
-        <div class="calculator__container">
+      <section class="keypad__container">
           
           <button class="calculator__btn">7</button>          
           <button class="calculator__btn">8</button>
           <button class="calculator__btn">9</button>
-          <button class="calculator__btn">del</button>
+          <button class="calculator__btn btn--text">del</button>
           <button class="calculator__btn">4</button>
           <button class="calculator__btn">5</button>
           <button class="calculator__btn">6</button>
@@ -56,10 +56,10 @@
           <button class="calculator__btn">0</button>               
           <button class="calculator__btn">/</button> 
           <button class="calculator__btn">x</button>
-          <button class="calculator__btn">reset</button> 
-          <button class="calculator__btn">=</button>
+          <button class="calculator__btn btn--large btn--text">reset</button> 
+          <button class="calculator__btn btn--large btn--equal">=</button>
 
-        </div>
+        
       </section>
       <!--End Calculator-->
     </div>
