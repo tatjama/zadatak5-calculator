@@ -72,18 +72,6 @@ body{
     background-color: var(--background-main);
 }
 button{
-    width: 101px;
-    height: 64px;
-    font-family: 'Spartan', sans-serif;
-    font-size: 32px;
-    line-height: 44px;
-    font-weight: 700;
-    border-radius: 10px;
-    padding: 10px 14px;
-    margin: 12px;
-    color: var(--text-main);
-    background-color: var(--key-main);
-    box-shadow: inset 0px -4px 0px var(--key-shadow-main);
     border: 0;
     outline: 0;
     cursor: pointer;
@@ -92,22 +80,10 @@ button{
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
-button:hover{
-    background-color: var(--key-hover-main);
-}
 input{
-    width: 100%;
     font-family: "Spartan", sans-serif;
-    font-size:48px;
-    line-height:54px;
-    direction: rtl;
-    color: var(--text-header);
-    background-color: var(--background-screen);
     outline: 0;
     border: 0;
-}
-input::placeholder{
-    color: var(--text-header);
 }
 .container{
     width: 540px;
@@ -175,6 +151,7 @@ input::placeholder{
     background-color: var(--key-hover-secondary);
 }
 /*End Theme Section*/
+/*Start Display Section*/
 .display-container{
     width: 100%;
     height: 128px;
@@ -187,6 +164,24 @@ input::placeholder{
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
+.display__memory{
+    font-size:16px;
+    line-height:28px;
+    direction: rtl;
+    color: var(--text-header);
+}
+.display__input{
+    width: 100%;    
+    font-size:48px;
+    line-height:54px;
+    direction: rtl;
+    color: var(--text-header);
+    background-color: var(--background-screen);
+}
+.display__input::placeholder{
+    color: var(--text-header);
+}
+/*End Display Section*/
 /*Start Keypad Section*/
 .keypad__container{
     width: 100%;
@@ -201,6 +196,23 @@ input::placeholder{
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+}
+.calculator__btn{
+    width: 101px;
+    height: 64px;
+    font-family: 'Spartan', sans-serif;
+    font-size: 32px;
+    line-height: 44px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 12px;
+    color: var(--text-main);
+    background-color: var(--key-main);
+    box-shadow: inset 0px -4px 0px var(--key-shadow-main);    
+}
+.calculator__btn:hover{
+    background-color: var(--key-hover-main);
 }
 .btn--large{
     width: 227px;
@@ -227,18 +239,7 @@ input::placeholder{
     background-color: var(--key-hover-secondary);
 }
 /*End Keypad Section*/
-@media screen and (max-width: 600px) {
-    button {
-        width: 60px;
-        height: 64px;
-        font-size: 28px;
-        line-height: 32px;
-        margin: 6.5px;
-    }
-    input{
-        font-size: 32px;
-        line-height: 36px;
-    }
+@media screen and (max-width: 600px) {       
     .container{
         width: 327px;
         height: 608px;  
@@ -247,9 +248,24 @@ input::placeholder{
     .display-container{
         height: 88px;
     }
+    .display__memory{
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .display__input{
+        font-size: 32px;
+        line-height: 36px;
+    }
     .keypad__container{
         padding: 17.5px;
     }  
+    .calculator__btn{
+        width: 60px;
+        height: 64px;
+        font-size: 28px;
+        line-height: 32px;
+        margin: 6.5px;
+    }
     .btn--large{
         width: 133px;
     }
