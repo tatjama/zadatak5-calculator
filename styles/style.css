@@ -167,14 +167,15 @@ input{
 .display__memory{
     font-size:16px;
     line-height:28px;
-    direction: rtl;
+    float:right;
     color: var(--text-header);
 }
 .display__input{
-    width: 100%;    
+    width: 100%;
+    overflow: hidden;    
     font-size:48px;
     line-height:54px;
-    direction: rtl;
+    text-align: right;
     color: var(--text-header);
     background-color: var(--background-screen);
 }
