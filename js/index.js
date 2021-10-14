@@ -48,7 +48,7 @@ let lastIsNumber =true;
 let noDots = true;
 let result = null;
 let deletedCharacter = "";
-let sizeOfScreen = 12;
+let sizeOfScreen = (window.innerWidth > 600)? 15: 12;
 
 /**Input values through numeric keyboard */
 const handleKeyDown = (e) => {
@@ -172,6 +172,16 @@ function getCharacter(btn){
     if(!pattern.test(btn) && !pattern1.test(btn) && !pattern2.test(btn)){return}
     let newIsNumber = isCharacterNumber(btn); 
 
+    const displayResult = () =>{      
+        displayMemory.innerHTML = memory;  
+        let resultOfCalculation = calculate();
+        memory = resultOfCalculation.toString();
+        btn = memory;
+        noDots = true;        
+        inputField.value =  memory;
+    }
+
+    /**End Validation of Expression */
     if(btn === "del"){
         if (memory == NaN){
             displayMemory.innerHTML = memory;
@@ -197,9 +207,9 @@ function getCharacter(btn){
         lastIsNumber = true;
         noDots = true;
         result = null;  
-        displayMemory.innerHTML = inputField.value;  
-        inputField.value = "0";           
         memory = "";
+        displayMemory.innerHTML = inputField.value;  
+        inputField.value = "0";        
         return 
     }        
     
@@ -234,14 +244,7 @@ function getCharacter(btn){
 
     /**End Validation of Expression */    
 
-    function displayResult() {      
-        displayMemory.innerHTML = memory;  
-        let resultOfCalculation = calculate();
-        memory = resultOfCalculation.toString();
-        btn = memory;
-        noDots = true;        
-        inputField.value =  memory;
-    }
+    
     inputField.value = (memory.length <= sizeOfScreen)? memory: memory.slice(memory.length-sizeOfScreen);
     lastCharacter = btn;
     lastIsNumber = isCharacterNumber(lastCharacter);

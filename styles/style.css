@@ -155,7 +155,7 @@ input{
 .display-container{
     width: 100%;
     height: 128px;
-    padding: 32px;
+    padding:26px 32px;
     margin: 24px auto;
     background-color: var(--background-screen);
     border-radius: 10px;
@@ -169,6 +169,7 @@ input{
     line-height:28px;
     float:right;
     color: var(--text-header);
+    margin-bottom: 10px;
 }
 .display__input{
     width: 100%;
@@ -210,7 +211,11 @@ input{
     margin: 12px;
     color: var(--text-main);
     background-color: var(--key-main);
-    box-shadow: inset 0px -4px 0px var(--key-shadow-main);    
+    box-shadow: inset 0px -4px 0px var(--key-shadow-main);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 .calculator__btn:hover{
     background-color: var(--key-hover-main);
@@ -248,6 +253,7 @@ input{
     } 
     .display-container{
         height: 88px;
+        padding-top: 20px;
     }
     .display__memory{
         font-size: 12px;
