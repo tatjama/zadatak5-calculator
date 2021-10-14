@@ -50,14 +50,11 @@ let lastCharacter = "0";
 let lastIsNumber =true;
 let noDots = true;
 let result = null;
-//let finalResult = null;
 let deletedCharacter = "";
+let sizeOfScreen = 12;
 
 const countOperation = (first, operator, second) => {
     let res = 0 
-    console.log(operator)
-    console.log(first)
-    console.log(second)
     switch(operator){
         case "+": res = (first * 10 + second * 10) / 10;
         break;
@@ -74,7 +71,6 @@ const countOperation = (first, operator, second) => {
         default: res = 0;
             break;
     }
-    console.log(res)
     return res;
 }            
 
@@ -93,7 +89,6 @@ const convertInputToValidArray = () => {
         element = firstSign;
         firstSign = "";
     }
-
     //Convert  array
     while(result.length > 0){
         let temp = result.shift();
@@ -119,8 +114,6 @@ const convertInputToValidArray = () => {
     element ="";
     /**Adding minus sign on first element of convertedArray. */
     if(firstSign !== "")convertedArray[0] = convertedArray[0] * (-1);
-    console.log(convertedArray);
-
     // Make calculation
     let counter = convertedArray.length
     let newElement;
@@ -133,7 +126,6 @@ const convertInputToValidArray = () => {
             convertedArray[i-1] = newElement;
             counter = counter-2;
             i--;
-            console.log(convertedArray)
         }
         if(i == counter )break ;
     }
@@ -142,7 +134,6 @@ const convertInputToValidArray = () => {
         while(convertedArray.length > 1){
            newElement = countOperation(convertedArray.shift(), convertedArray.shift(), convertedArray.shift());
             convertedArray.unshift(newElement);
-            console.log(convertedArray)
         }                
     }
     
@@ -153,17 +144,12 @@ const convertInputToValidArray = () => {
 const calculate = () => {
     memory = memory.toString().replace(/,/g, ".");
     result = memory.split("");        
-    /*let convertedArray = convertInputToValidArray();         
-    finalResult = parseFloat(convertedArray[0].toFixed(2));        
-    return finalResult*/
     return parseFloat(convertInputToValidArray()[0].toFixed(2));
 }
 
 function getCharacter(btn){
-    console.log(lastCharacter);
-    console.log(btn);
-    console.log(memory)
     let newIsNumber = isCharacterNumber(btn); 
+
     if(btn === "del"){
         if (memory == NaN){
             displayMemory.innerHTML = memory;
@@ -181,23 +167,19 @@ function getCharacter(btn){
         if(deletedCharacter === ",") noDots = true;
         inputField.value = memory;
         return memory  
-        }
-              
+        }              
     }
+
     if(btn === "reset"){
-       // memory = "0";
         lastCharacter = null;
         lastIsNumber = true;
         noDots = true;
-        result = null;
-        //inputField.value = memory; 
-        //displayMemory.innerHTML = memory;  
+        result = null;  
         displayMemory.innerHTML = inputField.value;  
         inputField.value = "0";           
         memory = "";
         return memory;
-    }   
-        
+    }        
     
     if(newIsNumber){  
         if(result || memory == "0"){
@@ -231,19 +213,15 @@ function getCharacter(btn){
 
     /**End Validation of Expression */    
 
-    function displayResult() {        
-        memory = calculate().toString();
+    function displayResult() {      
+        displayMemory.innerHTML = memory;  
+        let resultOfCalculation = calculate();
+        memory = resultOfCalculation.toString();
         btn = memory;
-        noDots = true;
-        displayMemory.innerHTML = inputField.value;
-        /*let dis = memory.toString().replace(".", ",")
-        inputField.value = dis;*/
-        inputField.value = memory;
+        noDots = true;        
+        inputField.value =  memory;
     }
-
-    /**End Calculate Equal btn */        
-
-    inputField.value = memory;
+    inputField.value = (memory.length <= sizeOfScreen)? memory: memory.slice(memory.length-sizeOfScreen);
     lastCharacter = btn;
     lastIsNumber = isCharacterNumber(lastCharacter);
 }
