@@ -36,14 +36,11 @@ switcherContainer.addEventListener("click",changeTheme);
 
 //CALCULATOR 
 
-//TODO const validInput = /^[-+]?[0-9]+([-+*/]+[-+]?[0-9]+)*$/;
-
 const inputField = document.querySelector("input");
 const btns = document.querySelectorAll(".calculator__btn");
 const displayMemory = document.querySelector(".display__memory");
-//const btnsValues = [7,8,9,"del", 4, 5, 6, "+", 1, 2, 3, "-", ".", 0, "/", "x", "reset", "=" ];
 
-/**Start Validation of Expression */
+
 
 let memory = "0";
 let lastCharacter = "0";
@@ -52,6 +49,25 @@ let noDots = true;
 let result = null;
 let deletedCharacter = "";
 let sizeOfScreen = 12;
+
+/**Input values through numeric keyboard */
+const handleKeyDown = (e) => {
+    e.preventDefault();
+    let newKey; 
+    switch(e.key){
+        case "*" : newKey = "x";
+        break; 
+        case "Enter": newKey = "=";
+        break;
+        case "Backspace": newKey = "del";
+        break;
+        case "Delete": newKey = "reset";
+        break;
+         default : newKey = e.key
+         break;
+    }
+    getCharacter(newKey)
+}
 
 const countOperation = (first, operator, second) => {
     let res = 0 
@@ -147,7 +163,13 @@ const calculate = () => {
     return parseFloat(convertInputToValidArray()[0].toFixed(2));
 }
 
+/**Start Validation of Expression */
 function getCharacter(btn){
+    let pattern = /[0-9-/+x.,=]/;
+    let pattern1 = /reset/;
+    let pattern2 = /del/;
+    //Validation of input characters only numbers, operations, del, reset and .
+    if(!pattern.test(btn) && !pattern1.test(btn) && !pattern2.test(btn)){return}
     let newIsNumber = isCharacterNumber(btn); 
 
     if(btn === "del"){
@@ -165,8 +187,8 @@ function getCharacter(btn){
         if(arrayOfDots.length > 1) noDots = (!isNaN(arrayOfDots[arrayOfDots.length-1]*1) 
         || lastCharacter === "," || lastCharacter === ".")?false : true;    
         if(deletedCharacter === ",") noDots = true;
-        inputField.value = memory;
-        return memory  
+        inputField.value = (memory.length <= sizeOfScreen)? memory: memory.slice(memory.length-sizeOfScreen);
+        return 
         }              
     }
 
@@ -178,7 +200,7 @@ function getCharacter(btn){
         displayMemory.innerHTML = inputField.value;  
         inputField.value = "0";           
         memory = "";
-        return memory;
+        return 
     }        
     
     if(newIsNumber){  
@@ -191,9 +213,8 @@ function getCharacter(btn){
         result = null;
         switch(btn){           
             case "-":
-                console.log(lastCharacter)
                 memory = (lastCharacter == "-")? memory: 
-                (lastCharacter == "+" || lastCharacter == "." ||lastCharacter =="," || memory == "0")
+                (lastCharacter == "+" || lastCharacter == "." || lastCharacter =="," || memory == "0")
                 ? (memory.slice(0, memory.length-1) + btn)  : (memory + btn);
                 noDots = true;
             break;           
@@ -228,3 +249,4 @@ function getCharacter(btn){
 
 
 btns.forEach(btn => btn.addEventListener("click",() => getCharacter(btn.innerHTML)))
+inputField.addEventListener("keydown", handleKeyDown);
