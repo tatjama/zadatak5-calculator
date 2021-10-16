@@ -4,20 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- displays site properly based on user's device -->
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet">
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
-
+    <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
     <title>Calculator app</title>
-
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style></style>
   </head>
-  <body>
-    <div class="attribution">Coded by <a href="#">Your Name Here</a>.</div>
+  <body >
+    <!--<div class="attribution">Coded by <a href="#">Your Name Here</a>.</div>-->
+    <div class="container">
+      <!--Start Header-->
+      <header class="calculator-header">        
+        <div class="logo">calc</div>
+
+        <div class="theme">
+          <div class="theme__title">theme</div>
+          <div class="theme__switcher-container">
+            <!--<div class="calculator-theme__cases"></div>-->
+            <div class="theme__switcher"></div>
+          </div>
+        </div>
+      </header>
+      <!--End Header-->
+      <!--Start Display-->
+      <section class="display-container">
+        <p class="display__memory"></p>
+        <input class="display__input" type="text" name="number" placeholder="0" autofocus="true"/>
+      </section>
+      <!--End Display-->
+      <!--Start Calculator-->
+      <section class="keypad__container">
+          
+          <button id="btn-7" class="calculator__btn">7</button>          
+          <button id="btn-8" class="calculator__btn">8</button>
+          <button id="btn-9" class="calculator__btn">9</button>
+          <button id="btn-del" class="calculator__btn btn--text">del</button>
+          <button id="btn-4" class="calculator__btn">4</button>
+          <button id="btn-5" class="calculator__btn">5</button>
+          <button id="btn-6" class="calculator__btn">6</button>
+          <button id="btn-+" class="calculator__btn">+</button>
+          <button id="btn-1" class="calculator__btn">1</button>
+          <button id="btn-2" class="calculator__btn">2</button>
+          <button id="btn-3" class="calculator__btn">3</button>
+          <button id="btn--" class="calculator__btn">-</button> 
+          <button id="btn-." class="calculator__btn">.</button>
+          <button id="btn-0" class="calculator__btn">0</button>               
+          <button id="btn-/" class="calculator__btn">/</button> 
+          <button id="btn-x" class="calculator__btn">x</button>
+          <button id="btn-res" class="calculator__btn btn--large btn--text">reset</button> 
+          <button id="btn-=" class="calculator__btn btn--large btn--equal">=</button>
+
+        
+      </section>
+      <!--End Calculator-->
+    </div>
+    <script src="./js/index.js"></script>
   </body>
 </html>
