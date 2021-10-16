@@ -20,8 +20,8 @@
   3. Display show "0"
 
 - Color Theme behavior: 
-  1. App have 3 Color themes and you can switch color by clicking color switcher on the right top 
-  2.When you click on Color switcher, pointer move to the position 1, 2 or 3, depedent on active    Color theme .
+  1. App have 3 Color themes and you can switch color by clicking color switcher on the right top. 
+  2.When you click on Color switcher, pointer move to the position 1, 2 or 3, dependent on active   Color theme .
   3. Default Color Theme is equal as the user prefer color scheme.
 
 - Input behavior

@@ -25,22 +25,22 @@ const  changeTheme = () => {
         default: theme = "dark-mode" ; switcherPosition = "0";
         break;
     }
-    //Remove Last Color Theme   
+
+    //Remove Last Color Theme 
+
     body.classList.remove(body.className);
     body.classList.add(theme);
     switcher.style.marginLeft = switcherPosition;
 }
 switcherContainer.addEventListener("click",changeTheme);
 
-//End Color Theme Manipulation
+/*END COLOR THEME MANIPULATION*/
 
-//CALCULATOR 
+/*START CALCULATOR */
 
 const inputField = document.querySelector("input");
 const btns = document.querySelectorAll(".calculator__btn");
 const displayMemory = document.querySelector(".display__memory");
-
-
 
 let memory = "0";
 let lastCharacter = "0";
@@ -50,7 +50,8 @@ let result = null;
 let deletedCharacter = "";
 let sizeOfScreen = (window.innerWidth > 600)? 15: 12;
 
-/**Input values through numeric keyboard */
+/**Start Input values through numeric keyboard */
+
 const handleKeyDown = (e) => {
     e.preventDefault();
     let newKey; 
@@ -68,6 +69,8 @@ const handleKeyDown = (e) => {
     }
     getCharacter(newKey)
 }
+
+/**End Input values through numeric keyboard */
 
 const countOperation = (first, operator, second) => {
     let res = 0 
@@ -99,21 +102,29 @@ const convertInputToValidArray = () => {
     let element = "";
     let tempLast = "";
     let convertedArray = [];
+
     //Find if the first element is -
+
     firstSign = result.shift();
     if(firstSign !== "-"){
         element = firstSign;
         firstSign = "";
     }
+
     //Convert  array
+
     while(result.length > 0){
         let temp = result.shift();
         if(!isNaN(temp*1) || temp === "." ){
-            /** If temp is number or "," */
+
+            // If temp is number or "," 
+
             element = (element === "")? temp: element + temp;                                
             tempLast = "";
         }else{
-            /**If temp is operator */
+
+            //If temp is operator 
+
             if(temp === "/" || temp === "x") tempLast = temp;
             if(element) convertedArray.push(parseFloat(element));
             element ="";
@@ -125,15 +136,23 @@ const convertInputToValidArray = () => {
             convertedArray.push(temp);
         }
     }
-    /**Adding last element of result into convertedArray. */
+
+    //Adding last element of result into convertedArray. 
+
     if(element !== "")convertedArray.push(parseFloat(element));
     element ="";
-    /**Adding minus sign on first element of convertedArray. */
+
+    //Adding minus sign on first element of convertedArray. 
+
     if(firstSign !== "")convertedArray[0] = convertedArray[0] * (-1);
+    
     // Make calculation
+    
     let counter = convertedArray.length
     let newElement;
-    /**First calculate operations * and / */
+    
+    //First calculate operations * and / 
+    
     for(let i = 0; i < convertedArray.length; i++){
         if(convertedArray[i] == "x" || convertedArray[i] == "/" 
         || convertedArray[i] == "x-" || convertedArray[i] == "/-"){                    
@@ -145,7 +164,9 @@ const convertInputToValidArray = () => {
         }
         if(i == counter )break ;
     }
-    /**Second calculate operations + and - */
+
+    //Second calculate operations + and - 
+    
     if(convertedArray.length > 1){
         while(convertedArray.length > 1){
            newElement = countOperation(convertedArray.shift(), convertedArray.shift(), convertedArray.shift());
@@ -157,6 +178,7 @@ const convertInputToValidArray = () => {
 }
 
 /*Start Calculate Equal btn */
+
 const calculate = () => {
     memory = memory.toString().replace(/,/g, ".");
     result = memory.split("");        
@@ -164,11 +186,14 @@ const calculate = () => {
 }
 
 /**Start Validation of Expression */
+
 function getCharacter(btn){
     let pattern = /[0-9-/+x.,=]/;
     let pattern1 = /reset/;
     let pattern2 = /del/;
+
     //Validation of input characters only numbers, operations, del, reset and .
+
     if(!pattern.test(btn) && !pattern1.test(btn) && !pattern2.test(btn)){return}
     let newIsNumber = isCharacterNumber(btn); 
 
@@ -180,8 +205,7 @@ function getCharacter(btn){
         noDots = true;        
         inputField.value =  memory;
     }
-
-    /**End Validation of Expression */
+    
     if(btn === "del"){
         if (memory == NaN){
             displayMemory.innerHTML = memory;
@@ -243,13 +267,15 @@ function getCharacter(btn){
     }    
 
     /**End Validation of Expression */    
-
     
     inputField.value = (memory.length <= sizeOfScreen)? memory: memory.slice(memory.length-sizeOfScreen);
     lastCharacter = btn;
     lastIsNumber = isCharacterNumber(lastCharacter);
 }
 
+/**Add Event listeners */
 
 btns.forEach(btn => btn.addEventListener("click",() => getCharacter(btn.innerHTML)))
 inputField.addEventListener("keydown", handleKeyDown);
+
+/**END CALCULATOR */
